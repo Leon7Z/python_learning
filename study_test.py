@@ -31,6 +31,6 @@ def print_movie(movie_info, indent = False, level = 0):
                 for tab_stop in range(level):
                     print("\t", end='')
             print(each_item12)
-            
+
 print_movie(movies, True)
 
