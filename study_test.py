@@ -22,7 +22,9 @@ movies = [
 #                 print(each_item1)
 #     else:
 #         print(each_item)
-def print_movie(movie_info, indent = False, level = 0):
+
+
+def print_movie(movie_info, indent=False, level=0):
     for each_item12 in movie_info:
         if isinstance(each_item12,list):
             print_movie(each_item12, indent, level + 1)
@@ -31,6 +33,7 @@ def print_movie(movie_info, indent = False, level = 0):
                 for tab_stop in range(level):
                     print("\t", end='')
             print(each_item12)
+
 
 print_movie(movies, True)
 
