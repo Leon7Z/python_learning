@@ -3,7 +3,6 @@ Bing壁纸爬虫
 """
 import urllib
 import urllib.request
-import urllib.parse
 import ssl
 import time
 import json
