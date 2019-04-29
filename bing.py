@@ -28,7 +28,7 @@ class BingBgDownloader(object):
         for info in img_info:
             print(self._get_imgurl(info))
             print(self._get_img_filename(info))
-            self._down_img(self._get_imgurl(info), self._get_img_filename(info))
+            self._down_img(self._get_imgurl(info), self._get_img_filename(info), local_path)
 
     # 从接口获取图片资源信息
     def _get_img_infos(self, url):
@@ -54,12 +54,12 @@ class BingBgDownloader(object):
 
     # 得到图片资源的URL
     def _get_imgurl(self, img_info):
-        return img_info['urlbase']
+        return self._bing_url + img_info['url']
 
     # 下载图片
-    def _down_img(self, img_url, img_pathname):
+    def _down_img(self, img_url, img_pathname, path):
         img_data = urllib.request.urlopen(img_url).read()
-        f = open(img_pathname, 'wb')
+        f = open(path + img_pathname, 'wb')
         f.write(img_data)
         f.close()
         print('success saved image:', img_url)
@@ -67,5 +67,5 @@ class BingBgDownloader(object):
 
 if __name__ == '__main__':
     dl = BingBgDownloader()
-    dl.download(1)
+    dl.download(8)
 
