@@ -26,7 +26,7 @@ movies = [
 
 def print_movie(movie_info, indent=False, level=0):
     for each_item12 in movie_info:
-        if isinstance(each_item12,list):
+        if isinstance(each_item12, list):
             print_movie(each_item12, indent, level + 1)
         else:
             if indent:
@@ -36,4 +36,3 @@ def print_movie(movie_info, indent=False, level=0):
 
 
 print_movie(movies, True)
-
