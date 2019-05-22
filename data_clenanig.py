@@ -27,16 +27,24 @@ clean_julie = []
 clean_mikey = []
 clean_sarah = []
 
-for each_t in james:
-    clean_james.append(sanitize(each_t))
-for each_t in julie:
-    clean_julie.append(sanitize(each_t))
-for each_t in mikey:
-    clean_mikey.append(sanitize(each_t))
-for each_t in sarah:
-    clean_sarah.append(sanitize(each_t))
+#列表迭代
+# for each_t in james:
+#     clean_james.append(sanitize(each_t))
+# for each_t in julie:
+#     clean_julie.append(sanitize(each_t))
+# for each_t in mikey:
+#     clean_mikey.append(sanitize(each_t))
+# for each_t in sarah:
+#     clean_sarah.append(sanitize(each_t))
+
+#列表推导
+clean_james = [sanitize(each_t) for each_t in james]
+clean_julie = [sanitize(each_t) for each_t in julie]
+clean_mikey = [sanitize(each_t) for each_t in mikey]
+clean_sarah = [sanitize(each_t) for each_t in sarah]
 
 print(sorted(clean_james))
 print(sorted(clean_julie))
 print(sorted(clean_mikey))
 print(sorted(clean_sarah))
+
