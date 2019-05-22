@@ -19,7 +19,7 @@ class BingBgDownloader(object):
         ssl._create_default_https_context = ssl._create_unverified_context
 
     # 下载壁纸图片
-    def download(self, num=1, local_path = 'd:\\'):
+    def download(self, num=1, local_path='d:\\'):
         if num < 1:
             num = 1
         url = self._bing_interface % (num, int(time.time()))
@@ -28,16 +28,22 @@ class BingBgDownloader(object):
         for info in img_info:
             print(self._get_imgurl(info))
             print(self._get_img_filename(info))
-            self._down_img(self._get_imgurl(info), self._get_img_filename(info))
+            self._down_img(
+                self._get_imgurl(info),
+                self._get_img_filename(info))
 
     # 从接口获取图片资源信息
+
     def _get_img_infos(self, url):
         request = urllib.request.urlopen(url).read()
         bgobjs = json.loads(bytes.decode(request))
         print(bgobjs['images'])
         return bgobjs['images']
 
+
+
     # 从接口数据提取图片文件名
+
     def _get_img_filename(self, img_info):
         zh_name = ''
         pos = img_info['copyright'].index('(')
@@ -65,7 +71,8 @@ class BingBgDownloader(object):
         print('success saved image:', img_url)
 
 
+
+
 if __name__ == '__main__':
     dl = BingBgDownloader()
     dl.download(1)
-
