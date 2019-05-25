@@ -16,8 +16,7 @@ def read_data(filename):
     except IOError as ioerr:
         print('File error:' + str(ioerr))
         return None
-
-
+#sorted把set转换为了list，所以可以切片
 print(sorted(set([sanitize(each_t) for each_t in read_data('james')]))[0:3])
 print(sorted(set([sanitize(each_t) for each_t in read_data('julie')]))[0:3])
 print(sorted(set([sanitize(each_t) for each_t in read_data('mikey')]))[0:3])
