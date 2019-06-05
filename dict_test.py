@@ -8,29 +8,42 @@ def sanitize(time_string):
     (mins, secs) = time_string.split(splitter)
     return mins + '.' + secs
 
+# 定制类写法
+# class Althlete:
+#     def __init__(self, name, dob=None, times=[]):
+#         self.name = name
+#         self.dob = dob
+#         self.times = times
+#
+#     def top3(self):
+#         return sorted(set([sanitize(each_t)
+#                                for each_t in self.times]))[0:3]
+#
+#     def add_time(self, new_time):
+#         self.times.append(new_time)
+#
+#     def add_times(self, new_times):
+#         self.times.extend(new_times)
 
-class Althlete:
-    def __init__(self, name, dob=None, times=[]):
-        self.name = name
+
+# 继承类写法
+class AlthleteList(list):
+    def __init__(self, name, dob=None, times=[]):  # 先继承，在重构
+        list.__init__([])  # 继承父类的构造方法，也可以写成：super(Chinese,self).__init__(name,age)
+        self.name = name  # 定义类的本身属性
         self.dob = dob
-        self.times = times
+        self.extend(times)
 
     def top3(self):
-        return sorted(set([sanitize(each_t)
-                               for each_t in self.times]))[0:3]
+        return sorted(set([sanitize(each_t) for each_t in self]))[0:3]
 
-    def add_time(self, new_time):
-        self.times.append(new_time)
-
-    def add_times(self, new_times):
-        self.times.extend(new_times)
 
 
 def get_coach_data(filename):
     try:
         with open(filename) as f:
             data = f.readline().strip().split(',')
-        return Althlete(data.pop(0), data.pop(0), data)
+        return AlthleteList(data.pop(0), data.pop(0), data)
         #     althlete_dict = dict()
         #     althlete_dict['Name'] = data.pop(0)
         #     althlete_dict['DOB'] = data.pop(0)
@@ -56,3 +69,7 @@ print(sarah_data.name + "'s fastest times are:" + str(sarah_data.top3()))
 print(james_data.name + "'s fastest times are:" + str(james_data.top3()))
 print(julie_data.name + "'s fastest times are:" + str(julie_data.top3()))
 print(mikey_data.name + "'s fastest times are:" + str(mikey_data.top3()))
+
+
+
+
