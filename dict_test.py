@@ -9,7 +9,7 @@ def sanitize(time_string):
     return mins + '.' + secs
 
 # 定制类写法
-# class Althlete:
+# class Athlete:
 #     def __init__(self, name, dob=None, times=[]):
 #         self.name = name
 #         self.dob = dob
@@ -27,7 +27,7 @@ def sanitize(time_string):
 
 
 # 继承类写法
-class AlthleteList(list):
+class AthleteList(list):
     def __init__(self, name, dob=None, times=[]):  # 先继承，在重构
         list.__init__([])  # 继承父类的构造方法，也可以写成：super(Chinese,self).__init__(name,age)
         self.name = name  # 定义类的本身属性
@@ -43,7 +43,7 @@ def get_coach_data(filename):
     try:
         with open(filename) as f:
             data = f.readline().strip().split(',')
-        return AlthleteList(data.pop(0), data.pop(0), data)
+        return AthleteList(data.pop(0), data.pop(0), data)
         #     althlete_dict = dict()
         #     althlete_dict['Name'] = data.pop(0)
         #     althlete_dict['DOB'] = data.pop(0)
